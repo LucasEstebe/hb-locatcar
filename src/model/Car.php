@@ -7,7 +7,7 @@ namespace App\model;
 class Car
 {
     private $id;
-    private $brand;
+    private $maker;
     private $model;
 
     ////////GETTERS////////////////////////
@@ -21,11 +21,11 @@ class Car
     }
 
     /**
-     * @return brand
+     * @return maker
      */
-    public function getBrand()
+    public function getMaker()
     {
-        return $this->brand;
+        return $this->maker;
     }
 
     /**
@@ -48,11 +48,11 @@ class Car
     }
 
     /**
-     * @param string $brand
+     * @param string $maker
      */
-    public function setBrand($brand)
+    public function setMaker($maker)
     {
-        $this->brand = $brand;
+        $this->maker = $maker;
     }
 
     /**

@@ -7,7 +7,7 @@ namespace App\service;
 use App\model\Car;
 use PDO;
 
-class CarManager
+class CarManager implements ManagerInterface
 {
     private $pdo;
 
@@ -23,8 +23,12 @@ class CarManager
         $query = "SELECT * FROM car";
         $statement = $this->pdo->prepare($query);
         $statement->execute();
-        return $statement->fetchAll(PDO::FETCH_ASSOC);
-
+        $data =  $statement->fetchAll(PDO::FETCH_ASSOC);
+        $cars = [];
+        foreach ($data as $d){
+            array_push($cars, $this->arrayToObject($d));
+        }
+        return $cars;
     }
 
     /**
@@ -32,7 +36,6 @@ class CarManager
      * @return Car
      */
     public function findOneById(int $id){
-
     }
 
     /**
@@ -41,6 +44,18 @@ class CarManager
      * @return Car[]
      */
     public function findByField(string $field, string $value){
+    }
 
+
+    /**
+     * @param array $array
+     * @return Car
+     */
+    public function arrayToObject(array $array){
+        $car = new Car();
+        $car->setId($array['id']);
+        $car->setMaker($array['maker']);
+        $car->setModel($array['model']);
+        return $car;
     }
 }

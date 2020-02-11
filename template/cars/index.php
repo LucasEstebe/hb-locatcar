@@ -14,7 +14,7 @@
 <h1>Car List</h1>
 <ul>
     <?php foreach ( $cars as $car) : ?>
-        <li><?= $car['brand'] ?> - <?= $car['model'] ?></li>
+        <li><?= $car->getMaker(); ?> - <?= $car->getModel(); ?></li>
     <?php endforeach; ?>
 </ul>
 
