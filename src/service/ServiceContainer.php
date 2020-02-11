@@ -2,12 +2,15 @@
 namespace App\Service;
 use Bramus\Router\Router;
 use PDO;
+use Twig\Environment;
+use Twig\Loader\FilesystemLoader;
 
 class ServiceContainer {
     private $router;
     private $pdo;
     private $configuration;
     private $carManager;
+    private $twig;
 
 
     /**
@@ -53,6 +56,15 @@ class ServiceContainer {
             $this->pdo->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
         }
         return $this->pdo;
+    }
+
+    public function getTwig(){
+        if($this->twig === null){
+            $loader = new FilesystemLoader(__DIR__.'/../../template');
+            $twig = new Environment($loader);
+            $this->twig = $twig;
+        }
+        return $this->twig;
     }
 
 }

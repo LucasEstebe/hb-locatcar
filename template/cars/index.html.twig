@@ -13,9 +13,9 @@
 
 <h1>Car List</h1>
 <ul>
-    <?php foreach ( $cars as $car) : ?>
-        <li><?= $car->getMaker(); ?> - <?= $car->getModel(); ?></li>
-    <?php endforeach; ?>
+    {% for car in cars %}
+    <li>{{ car.maker }} {{ car.model }}</li>
+    {% endfor %}
 </ul>
 
 <!-- Optional JavaScript -->
