@@ -1,11 +1,11 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <project version="4">
   <component name="DataSourceManagerImpl" format="xml" multifile-model="true">
-    <data-source source="LOCAL" name="hb-locatcars@localhost" uuid="7c6761da-c6dd-499b-af8e-0b49fab19d5e">
-      <driver-ref>mysql.8</driver-ref>
+    <data-source source="LOCAL" name="hblocatcars@localhost" uuid="e8b5476e-fa4d-47da-adcd-5ebe8844f280">
+      <driver-ref>mysql</driver-ref>
       <synchronize>true</synchronize>
-      <jdbc-driver>com.mysql.cj.jdbc.Driver</jdbc-driver>
-      <jdbc-url>jdbc:mysql://localhost:3306/hb-locatcars</jdbc-url>
+      <jdbc-driver>com.mysql.jdbc.Driver</jdbc-driver>
+      <jdbc-url>jdbc:mysql://localhost:3306/hblocatcars</jdbc-url>
     </data-source>
   </component>
 </project>

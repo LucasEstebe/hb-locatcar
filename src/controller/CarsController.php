@@ -19,4 +19,13 @@ class CarsController extends AbstractController
 
      echo $this->container->getTwig()->render('/cars/show.html.twig', ['car' => $car]);
  }
+
+ public function new(){
+     echo $this->container->getTwig()->render('/cars/new.html.twig');
+ }
+
+ public function create(){
+     $this->container->getCarManager()->add($_POST['maker'],$_POST['model']);
+    header('Location: http://localhost/hb/hb-locatcars/cars');
+ }
 }

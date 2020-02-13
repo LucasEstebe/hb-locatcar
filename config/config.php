@@ -6,7 +6,10 @@ $configuration = [
         'dsn'  => 'mysql:host=localhost;dbname=hblocatcars',
         'user' => 'root',
         'pass' => null,
-        ]
+        ],
+    'env' => [
+        'base_path' => 'http://localhost/hb/hb-locatcars/',
+    ]
 ];
 
 require_once __DIR__ . '/../vendor/autoload.php';

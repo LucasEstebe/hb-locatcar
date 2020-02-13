@@ -11,6 +11,10 @@ class CarManager implements ManagerInterface
 {
     private $pdo;
 
+    /**
+     * CarManager constructor.
+     * @param PDO $pdo
+     */
     public function __construct(PDO $pdo)
     {
         $this->pdo = $pdo;
@@ -33,7 +37,7 @@ class CarManager implements ManagerInterface
 
     /**
      * @param int $id
-     * @return Car
+     * @return Car | bool
      */
     public function findOneById(int $id){
         $query = "SELECT * FROM car WHERE id = :id";
@@ -42,6 +46,9 @@ class CarManager implements ManagerInterface
             'id'          => $id,
         ]);
         $data = $statement->fetch(PDO::FETCH_ASSOC);
+        if(!$data){
+            return $data;
+        }
         return $this->arrayToObject($data);
     }
 
@@ -51,6 +58,20 @@ class CarManager implements ManagerInterface
      * @return Car[]
      */
     public function findByField(string $field, string $value){
+    }
+
+    /**
+     * @param string $maker
+     * @param string $model
+     */
+    public function add(string $maker, string $model){
+    $query = "INSERT INTO car(maker, model) VALUES (:maker,:model)";
+    $statement = $this->pdo->prepare($query);
+    $statement->execute([
+        'maker' => $maker,
+        'model' => $model,
+    ]);
+    return;
     }
 
 
