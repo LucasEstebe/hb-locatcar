@@ -10,6 +10,7 @@ class ServiceContainer {
     private $pdo;
     private $configuration;
     private $carManager;
+    private $userManager;
     private $twig;
 
 
@@ -30,6 +31,16 @@ class ServiceContainer {
             $this->carManager = new CarManager($this->getPdo());
         }
         return $this->carManager;
+    }
+
+    /**
+     * @return UserManager
+     */
+    public function getUserManager(){
+        if($this->userManager === null){
+            $this->userManager = new UserManager($this->getPdo());
+        }
+        return $this->userManager;
     }
 
     /**
@@ -58,6 +69,9 @@ class ServiceContainer {
         return $this->pdo;
     }
 
+    /**
+     * @return Environment
+     */
     public function getTwig(){
         if($this->twig === null){
             $loader = new FilesystemLoader(__DIR__.'/../../template');

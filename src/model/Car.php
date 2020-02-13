@@ -13,7 +13,7 @@ class Car
     ////////GETTERS////////////////////////
 
     /**
-     * @return id
+     * @return int id
      */
     public function getId()
     {
@@ -21,7 +21,7 @@ class Car
     }
 
     /**
-     * @return maker
+     * @return string maker
      */
     public function getMaker()
     {
@@ -29,7 +29,7 @@ class Car
     }
 
     /**
-     * @return model
+     * @return string model
      */
     public function getModel()
     {
