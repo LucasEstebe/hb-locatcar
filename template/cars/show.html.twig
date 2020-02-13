@@ -1,7 +1,7 @@
 <!doctype html>
 <html lang="en">
 <head>
-    <title>Title</title>
+    <title>Car N° {{ car.id }}</title>
     <!-- Required meta tags -->
     <meta charset="utf-8">
     <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
@@ -11,12 +11,10 @@
 </head>
 <body>
 
-<h1>Car List</h1>
-<ul>
-    {% for car in cars %}
-    <li><a href="/hb/hb-locatcars/cars/{{ car.id }}">{{ car.maker }} {{ car.model }}</a></li>
-    {% endfor %}
-</ul>
+<small>Car id: {{ car.id }}</small>
+<h1>{{ car.maker }}</h1>
+<h2>{{ car.model }}</h2>
+
 
 <!-- Optional JavaScript -->
 <!-- jQuery first, then Popper.js, then Bootstrap JS -->

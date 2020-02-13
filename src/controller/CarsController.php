@@ -13,4 +13,10 @@ class CarsController extends AbstractController
 
      echo $this->container->getTwig()->render('/cars/index.html.twig', ['cars' => $cars]);
  }
+
+ public function show(int $id){
+     $car = $this->container->getCarManager()->findOneById($id);
+
+     echo $this->container->getTwig()->render('/cars/show.html.twig', ['car' => $car]);
+ }
 }

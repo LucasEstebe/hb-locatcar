@@ -36,6 +36,13 @@ class CarManager implements ManagerInterface
      * @return Car
      */
     public function findOneById(int $id){
+        $query = "SELECT * FROM car WHERE id = :id";
+        $statement =  $this->pdo->prepare($query);
+        $statement->execute([
+            'id'          => $id,
+        ]);
+        $data = $statement->fetch(PDO::FETCH_ASSOC);
+        return $this->arrayToObject($data);
     }
 
     /**
