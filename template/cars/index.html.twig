@@ -9,7 +9,7 @@
 <ul class="list-group">
     {% for car in cars %}
     <li class="list-group-item">
-        {{ car.maker }} {{ car.model }}
+        {{ car.maker }} {{ car.model }} || {{ car.isAvailable ? 'Not Available' : 'Available'}}
         <a class="badge badge-primary" href="{{ env.base_path }}cars/{{car.id}}">
                 <i class="fa fa-eye" aria-hidden="true"></i>
         </a>

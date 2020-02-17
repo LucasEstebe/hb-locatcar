@@ -11,6 +11,7 @@ class ServiceContainer {
     private $configuration;
     private $carManager;
     private $userManager;
+    private $rentalManager;
     private $twig;
 
 
@@ -41,6 +42,16 @@ class ServiceContainer {
             $this->userManager = new UserManager($this->getPdo());
         }
         return $this->userManager;
+    }
+
+    /**
+     * @return RentalManager
+     */
+    public function getRentalManager(){
+        if($this->rentalManager === null){
+            $this->rentalManager = new RentalManager($this->getPdo());
+        }
+        return $this->rentalManager;
     }
 
     /**

@@ -9,6 +9,7 @@ class Car
     private $id;
     private $maker;
     private $model;
+    private $isAvailable;
 
     ////////GETTERS////////////////////////
 
@@ -36,6 +37,13 @@ class Car
         return $this->model;
     }
 
+    /**
+     * @return bool isAvailable
+     */
+    public function getIsAvailable()
+    {
+        return $this->isAvailable;
+    }
 
     ////////SETTERS////////////////////////
 
@@ -61,5 +69,13 @@ class Car
     public function setModel($model)
     {
         $this->model = $model;
+    }
+
+    /**
+     * @param bool $isAvailable
+     */
+    public function setIsAvailable($isAvailable): void
+    {
+        $this->isAvailable = $isAvailable;
     }
 }

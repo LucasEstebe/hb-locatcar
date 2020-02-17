@@ -87,16 +87,16 @@ class CarManager implements ManagerInterface
     }
 
     public function update(Car $car){
-        $query = "UPDATE car SET maker = :maker, model = :model WHERE id = :id";
+        $query = "UPDATE car SET maker = :maker, model = :model, is_available = :isAvailable WHERE id = :id";
         $statement = $this->pdo->prepare($query);
         $statement->execute([
             'maker' => $car->getMaker(),
             'model' => $car->getModel(),
-            'id' => $car->getId()
+            'id' => $car->getId(),
+            'isAvailable' => $car->getIsAvailable(),
         ]);
         return;
     }
-
 
     /**
      * @param array $array
@@ -107,6 +107,7 @@ class CarManager implements ManagerInterface
         $car->setId($array['id']);
         $car->setMaker($array['maker']);
         $car->setModel($array['model']);
+        $car->setIsAvailable(($array['is_available']));
         return $car;
     }
 }

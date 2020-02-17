@@ -27,16 +27,16 @@ class CarsController extends AbstractController
 
      public function create(){
          $this->container->getCarManager()->add($_POST['maker'],$_POST['model']);
-        header('Location: '. $this->config['env']['base_path'] .'/cars');
+         $this->index();
      }
      public function delete(int $id){
-          $this->container->getCarManager()->delete($id);
-         header('Location: '. $this->config['env']['base_path'] .'cars');
+         $this->container->getCarManager()->delete($id);
+         $this->index();
 
      }
      public function edit(int $id){
-        $car = $this->container->getCarManager()->findOneById($id);
-        echo $this->container->getTwig()->render('/cars/form.html.twig', ['car' => $car]);
+         $car = $this->container->getCarManager()->findOneById($id);
+         echo $this->container->getTwig()->render('/cars/form.html.twig', ['car' => $car]);
      }
      public function update(){
          $car = new Car();
@@ -44,6 +44,6 @@ class CarsController extends AbstractController
          $car->setMaker($_POST['maker']);
          $car->setModel($_POST['model']);
          $this->container->getCarManager()->update($car);
-         header('Location: '. $this->config['env']['base_path'] .'cars');
+         $this->index();
      }
 }

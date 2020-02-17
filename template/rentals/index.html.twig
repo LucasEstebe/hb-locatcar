@@ -1,0 +1,52 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    Rental List
+{% endblock %}
+
+{% block content %}
+    <h1 class="my-3"><i class="fa fa-key"></i> Rental List</h1>
+    <table class="my-5 table table-striped">
+        <thead class="thead-dark">
+        <tr>
+            <th scope="col">ID</th>
+            <th scope="col">Car</th>
+            <th scope="col">User</th>
+            <th scope="col">Rental Date</th>
+            <th scope="col">Return Date</th>
+            <th scope="col">Duration</th>
+            <th scope="col">Daily Price</th>
+            <th scope="col">Total
+            <th scope="col">Actions</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for rental in rentals %}
+            <tr>
+                <th scope="row">{{ rental.id }}</th>
+                <td>{{ rental.car.maker }} {{ rental.car.model }}</td>
+                <td>{{ rental.user.username }}</td>
+                <td>{{ rental.startDate|date("d/m/Y") }}</td>
+                <td>{{ rental.startDate|date_modify("+"~rental.duration~" day")|date("d/m/Y") }}</td>
+                <td>{{ rental.duration }} days</td>
+                <td>{{ rental.dailyPrice }} €</td>
+                <td>{{ rental.dailyPrice * rental.duration }} €</td>
+                <td>
+                    <a class="badge badge-primary" href="{{ env.base_path }}rentals/{{ rental.id }}">
+                        <i class="fa fa-eye" aria-hidden="true"></i>
+                    </a>
+                    <a class="badge badge-warning" href="{{ env.base_path }}rentals/{{ rental.id }}/edit">
+                        <i class="fa fa-pencil" aria-hidden="true"></i>
+                    </a>
+                    <a class="badge badge-danger" href="{{ env.base_path }}rentals/{{ rental.id }}/delete">
+                        <i class="fa fa-trash" aria-hidden="true"></i>
+                    </a>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+    <a class="btn btn-info my-3" href="{{ env.base_path }}rentals/new" role="button">
+        New <i class="fa fa-plus" aria-hidden="true"></i>
+    </a>
+{% endblock %}

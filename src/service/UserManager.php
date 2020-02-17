@@ -36,6 +36,16 @@ class UserManager
      * @return User
      */
     public function findOneById(int $id){
+        $query = "SELECT * FROM user WHERE id = :id";
+        $statement =  $this->pdo->prepare($query);
+        $statement->execute([
+            'id'          => $id,
+        ]);
+        $data = $statement->fetch(\PDO::FETCH_ASSOC);
+        if(!$data){
+            return $data;
+        }
+        return $this->arrayToObject($data);
     }
 
     /**
