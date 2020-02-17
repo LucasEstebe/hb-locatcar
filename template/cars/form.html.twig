@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}
+    {% if car %}
+    Edit Car
+    {% else %}
+    New Car
+    {% endif %}
+{% endblock %}
+
+{% block content %}
+
+    <form action="{{ env.base_path }}cars/{{ car ? 'update' : 'create' }}" method="post">
+        <div class="form-group">
+            <label for="maker">Maker:</label>
+            <input type="text" class="form-control" name="maker" id="maker" value="{{ car.maker ? car.maker : '' }}">
+            <label for="model">Model:</label>
+            <input type="text" class="form-control" name="model" id="model" value="{{ car.model ? car.model : '' }}">
+            {% if car %}
+                <input type="hidden" value="{{ car.id }}" name="id">
+            {% endif %}
+        <button type="submit" class="btn btn-info my-3">{{ car ? 'Update' : 'Add' }}</button>
+        </div>
+    </form>
+
+{% endblock %}

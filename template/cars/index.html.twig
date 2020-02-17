@@ -5,11 +5,25 @@
 {% endblock %}
 
 {% block content %}
-<h1><i class="fa fa-car"></i> Car List</h1>
+<h1 class="my-3"><i class="fa fa-car"></i> Car List</h1>
 <ul class="list-group">
     {% for car in cars %}
-    <li class="list-group-item"><a href="{{ env.base_path }}cars/{{ car.id }}">{{ car.maker }} {{ car.model }}</a>  </li>
+    <li class="list-group-item">
+        {{ car.maker }} {{ car.model }}
+        <a class="badge badge-primary" href="{{ env.base_path }}cars/{{car.id}}">
+                <i class="fa fa-eye" aria-hidden="true"></i>
+        </a>
+        /
+        <a class="badge badge-warning" href="{{ env.base_path }}cars/{{car.id}}/edit">
+            <i class="fa fa-pencil" aria-hidden="true"></i>
+        </a>
+        /
+        <a class="badge badge-danger" href="{{ env.base_path }}cars/{{car.id}}/delete">
+            <i class="fa fa-trash" aria-hidden="true"></i>
+        </a>
+    </li>
     {% endfor %}
 </ul>
+    <a class="btn btn-info my-3" href="{{ env.base_path }}cars/new" role="button">Add car <i class="fa fa-plus" aria-hidden="true"></i></a>
 
 {% endblock %}

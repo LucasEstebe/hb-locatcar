@@ -74,6 +74,29 @@ class CarManager implements ManagerInterface
     return;
     }
 
+    /**
+     * @param int $id
+     */
+    public function delete(int $id){
+        $query = "DELETE FROM car WHERE id = :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'id' => $id,
+        ]);
+        return;
+    }
+
+    public function update(Car $car){
+        $query = "UPDATE car SET maker = :maker, model = :model WHERE id = :id";
+        $statement = $this->pdo->prepare($query);
+        $statement->execute([
+            'maker' => $car->getMaker(),
+            'model' => $car->getModel(),
+            'id' => $car->getId()
+        ]);
+        return;
+    }
+
 
     /**
      * @param array $array
